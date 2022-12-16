@@ -1,5 +1,9 @@
-const Loader = () => (
-  <div>Loader</div>
-);
+import React from 'react'
 
-export default Loader;
+function Loader(props) {
+  return (
+    <div>Loader</div>
+  )
+}
+
+export default Loader
