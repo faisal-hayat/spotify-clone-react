@@ -3,8 +3,11 @@ import React from "react";
 import { Error, Loader, SongCard } from "../components";
 import { genres } from "../assets/constants";
 import { useGetTopChartsQuery } from "../redux/services/shzamCore";
+import { useDispatch, useSelector } from "react-redux";
 
 function Discover(props){
+    const dispatch = useDispatch();
+    const { activeSong, isPlaying } = useSelector((state) => state.player);
     // These three are associated with fetching data from api
     const {data, isFetching, error} = useGetTopChartsQuery();
     // Checking the loadings state 
@@ -29,7 +32,7 @@ function Discover(props){
             </div>
             <div className="flex flex-wrap sm:justify-start justify-center gap-8">
                 {data?.map((song, index) => (
-                    <SongCard key={song.key} song={song} i={index} />
+                    <SongCard key={song.key} song={song} i={index} isPlaying={isPlaying} activeSong={activeSong} data={data} />
                 ))}
             </div>
         </div>
