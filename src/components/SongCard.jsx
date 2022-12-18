@@ -1,8 +1,8 @@
 // imports
 import React from 'react'
+import PlayPause from './PlayPause';
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import PlayPause from './PlayPause';
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
 
 // prpos : {song, i}
@@ -10,10 +10,12 @@ function SongCard({song, data, i, isPlaying, activeSong}) {
   const dispatch = useDispatch();
 
   const handlePauseClick = () => {
+
     dispatch(playPause(false));
   }
 
   const handlePlayClick = () => {
+
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   }
@@ -30,6 +32,7 @@ function SongCard({song, data, i, isPlaying, activeSong}) {
         </div>
 
         <img src={song.images?.coverart} alt="song_img" />
+
       </div>
       <div className='mt-4 flex flex-col'>
         
@@ -38,6 +41,7 @@ function SongCard({song, data, i, isPlaying, activeSong}) {
           <Link to={`/songs/${song?.key}`}>
             {song.title}
           </Link>
+
         </p>
         
         <p className='text-sm truncate text-gray-300 mt-1 '>
@@ -45,6 +49,7 @@ function SongCard({song, data, i, isPlaying, activeSong}) {
           <Link to={song.artists ? `/artists/${song?.artists[0]?.adamid} `: '/top-artists' }>
             {song.subtitle}
           </Link>
+
         </p>
 
       </div>
